@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>رانيا & مهدي | دعوة خطوبة</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #2b160e;
+    color: #fff;
+    font-family: "Amiri", serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   واجهة الدعوة
+========================= */
+
+.cover-screen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    z-index: 9999;
+    background: #2b160e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        visibility 1s ease;
+}
+
+.cover-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.cover-screen.opening {
+    opacity: 0;
+    transform: scale(1.06);
+    visibility: hidden;
+}
+
+.open-hint {
+    position: absolute;
+    bottom: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f8e7c8;
+    font-size: clamp(22px, 5vw, 32px);
+    text-shadow: 0 2px 12px rgba(0,0,0,.7);
+    pointer-events: none;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: .65;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* =========================
+   الدعوة
+========================= */
+
+.invitation {
+    position: relative;
+    min-height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+}
+
+.invitation.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* الخلفية ثابتة */
+.invitation::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+
+    background-image:
+        linear-gradient(
+            rgba(48, 25, 16, .48),
+            rgba(48, 25, 16, .55)
+        ),
+        url("background-rania-mahdi.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* طبقة دافئة */
+.invitation::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 225, 185, .08),
+            rgba(38, 18, 10, .35)
+        );
+    pointer-events: none;
+}
+
+/* =========================
+   الأقسام
+========================= */
+
+.section {
+    width: min(94%, 650px);
+    margin: 0 auto;
+    padding: 48px 15px;
+    text-align: center;
+    animation: sectionReveal 1s ease both;
+}
+
+@keyframes sectionReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section + .section {
+    padding-top: 30px;
+}
+
+/* زخرفة */
+.ornament {
+    width: 150px;
+    height: 1px;
+    margin: 20px auto;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #e6bd78,
+        #fff1d2,
+        #e6bd78,
+        transparent
+    );
+    position: relative;
+}
+
+.ornament::after {
+    content: "◆";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #e8c27c;
+    background: rgba(62,31,18,.7);
+    padding: 0 9px;
+    font-size: 12px;
+}
+
+/* =========================
+   القسم الأول
+========================= */
+
+.quran {
+    font-size: clamp(21px, 5vw, 28px);
+    line-height: 2;
+    color: #fff2dc;
+    text-shadow: 0 2px 10px rgba(0,0,0,.6);
+    margin-bottom: 18px;
+}
+
+.invitation-text {
+    font-size: clamp(19px, 4.7vw, 25px);
+    line-height: 1.9;
+    color: #f9ead2;
+    text-shadow: 0 2px 8px rgba(0,0,0,.7);
+}
+
+.names {
+    direction: ltr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    white-space: nowrap;
+    margin: 16px auto 10px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(45px, 11vw, 78px);
+    font-weight: 600;
+    line-height: 1;
+    color: #fff1d5;
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.75),
+        0 0 2px #8f5c2b;
+}
+
+.names .amp {
+    color: #e1ad63;
+    font-size: .7em;
+}
+
+/* =========================
+   التاريخ والوقت
+========================= */
+
+.date-title {
+    font-size: clamp(25px, 6vw, 34px);
+    color: #ffe8c1;
+    margin-bottom: 20px;
+}
+
+.date-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    min-width: 125px;
+    padding: 14px 20px;
+    border: 1px solid rgba(236, 193, 125, .8);
+    border-radius: 14px;
+    background: rgba(45, 22, 13, .62);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25),
+        inset 0 0 20px rgba(255,215,160,.05);
+}
+
+.info-label {
+    display: block;
+    font-size: 18px;
+    color: #dcb477;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    direction: ltr;
+    font-size: 25px;
+    color: #fff0d3;
+}
+
+/* =========================
+   القاعة
+========================= */
+
+.section-title {
+    font-size: clamp(29px, 7vw, 40px);
+    color: #ffe4b6;
+    margin-bottom: 15px;
+}
+
+.hall-card {
+    background: rgba(38, 18, 10, .62);
+    border: 1px solid rgba(225, 183, 113, .7);
+    border-radius: 22px;
+    padding: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
+.hall-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+}
+
+.hall-name {
+    font-size: clamp(24px, 6vw, 32px);
+    color: #fff0d5;
+    margin: 18px 5px;
+    line-height: 1.5;
+}
+
+/* زر الموقع */
+
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    margin-top: 10px;
+    padding: 14px 28px;
+
+    border-radius: 50px;
+    border: 1px solid #e3b96f;
+
+    background: linear-gradient(
+        135deg,
+        #8c4d29,
+        #5d2c19
+    );
+
+    color: #fff3dc;
+    text-decoration: none;
+
+    font-size: 21px;
+    font-family: "Amiri", serif;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.15);
+
+    transition: .3s ease;
+}
+
+.map-button:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   العداد
+========================= */
+
+.countdown-title {
+    font-size: clamp(27px, 7vw, 38px);
+    color: #ffe6bd;
+    margin-bottom: 22px;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+}
+
+.count-box {
+    background: rgba(42, 20, 11, .72);
+    border: 1px solid rgba(225, 183, 113, .65);
+    border-radius: 15px;
+    padding: 14px 5px;
+}
+
+.count-number {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(30px, 8vw, 46px);
+    color: #ffe5b7;
+    line-height: 1;
+}
+
+.count-label {
+    display: block;
+    margin-top: 7px;
+    font-size: 16px;
+    color: #dcb477;
+}
+
+/* =========================
+   النهاية
+========================= */
+
+.final-message {
+    font-size: clamp(27px, 7vw, 40px);
+    color: #fff0d3;
+    line-height: 1.8;
+}
+
+.final-sub {
+    font-size: clamp(20px, 5vw, 27px);
+    color: #e7c18a;
+    margin-top: 8px;
+}
+
+.bottom-space {
+    height: 30px;
+}
+
+/* =========================
+   زر الموسيقى
+========================= */
+
+.music-button {
+    position: fixed;
+    z-index: 5000;
+    top: 18px;
+    left: 18px;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(237,198,135,.85);
+
+    background: rgba(48, 24, 14, .78);
+    backdrop-filter: blur(10px);
+
+    color: #ffe4b6;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,.3);
+}
+
+.music-button.playing {
+    animation: musicPulse 1.5s infinite;
+}
+
+@keyframes musicPulse {
+    0%, 100% {
+        box-shadow: 0 5px 18px rgba(0,0,0,.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 8px rgba(224,180,108,.08),
+            0 5px 25px rgba(0,0,0,.4);
+    }
+}
+
+/* =========================
+   الهاتف
+========================= */
+
+@media (max-width: 480px) {
+
+    .section {
+        padding: 38px 10px;
+    }
+
+    .names {
+        font-size: clamp(39px, 11vw, 55px);
+        gap: 9px;
+    }
+
+    .hall-card img {
+        height: 240px;
+    }
+
+    .countdown {
+        gap: 6px;
+    }
+
+    .count-box {
+        padding: 12px 3px;
+    }
+
+    .count-number {
+        font-size: 31px;
+    }
+
+    .count-label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 350px) {
+
+    .names {
+        font-size: 36px;
+    }
+
+    .info-box {
+        min-width: 110px;
+    }
+}
+</style>
+
+<style id="layout-improvements">
+/* Improved spacing and separation */
+.section {
+    padding: 78px 18px !important;
+}
+.section + .section {
+    padding-top: 78px !important;
+}
+.rules {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 34px !important;
+}
+.rule-card {
+    margin: 0 auto !important;
+    width: 100%;
+    max-width: 560px;
+    padding: 30px 22px !important;
+}
+.rule-icon {
+    width: 66px !important;
+    height: 66px !important;
+    margin-bottom: 16px !important;
+}
+.rule-icon svg {
+    width: 31px !important;
+    height: 31px !important;
+}
+.hall-card {
+    margin-top: 28px !important;
+}
+.countdown {
+    margin-top: 28px !important;
+}
+.date-boxes {
+    margin-top: 28px !important;
+}
+.ornament {
+    margin: 28px auto !important;
+}
+@media (max-width: 500px) {
+    .section {
+        padding: 62px 15px !important;
+    }
+    .section + .section {
+        padding-top: 62px !important;
+    }
+    .rules {
+        gap: 28px !important;
+    }
+    .rule-card {
+        padding: 27px 18px !important;
+    }
+}
+</style>
+
+
+<style id="beautified-sections">
+/* ===== Premium section refinement ===== */
+.section{
+    padding: 88px 18px !important;
+    position: relative;
+}
+
+.section + .section{
+    padding-top: 88px !important;
+}
+
+.section::before{
+    content:"";
+    position:absolute;
+    left:12%;
+    right:12%;
+    top:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(229,185,113,.35),transparent);
+}
+
+.section:first-of-type::before{
+    display:none;
+}
+
+.ornament{
+    width:180px !important;
+    margin:30px auto !important;
+}
+
+.section-title,
+.date-title,
+.countdown-title{
+    text-shadow:0 3px 14px rgba(0,0,0,.45);
+    letter-spacing:.2px;
+}
+
+.names{
+    text-shadow:
+        0 4px 18px rgba(0,0,0,.65),
+        0 0 18px rgba(220,171,100,.12) !important;
+}
+
+.date-boxes{
+    gap:18px !important;
+    margin-top:30px !important;
+}
+
+.info-box{
+    min-width:145px !important;
+    padding:18px 22px !important;
+    background:rgba(42,20,12,.68) !important;
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,238,204,.10) !important;
+}
+
+.hall-card{
+    margin-top:30px !important;
+    padding:14px !important;
+    border-radius:24px !important;
+    background:rgba(39,18,10,.68) !important;
+}
+
+.hall-card img{
+    height:290px !important;
+    border-radius:18px !important;
+}
+
+.map-button{
+    margin-top:16px !important;
+    padding:15px 30px !important;
+    box-shadow:0 10px 25px rgba(0,0,0,.35) !important;
+}
+
+.countdown{
+    gap:12px !important;
+    margin-top:30px !important;
+}
+
+.count-box{
+    padding:17px 6px !important;
+    border-radius:17px !important;
+    background:rgba(40,19,11,.72) !important;
+    box-shadow:0 9px 22px rgba(0,0,0,.25) !important;
+}
+
+.rules{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:34px !important;
+    margin-top:30px !important;
+}
+
+.rule-card{
+    width:100% !important;
+    max-width:560px !important;
+    margin:0 auto !important;
+    padding:32px 22px !important;
+    border-radius:24px !important;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(67,31,18,.78),
+            rgba(37,17,10,.72)
+        ) !important;
+    box-shadow:
+        0 14px 35px rgba(0,0,0,.30),
+        inset 0 1px rgba(255,235,200,.09) !important;
+}
+
+.rule-card + .rule-card{
+    margin-top:0 !important;
+}
+
+.rule-icon{
+    width:72px !important;
+    height:72px !important;
+    margin:0 auto 18px !important;
+    background:rgba(118,62,34,.20) !important;
+    box-shadow:0 6px 18px rgba(0,0,0,.22) !important;
+}
+
+.rule-icon svg{
+    width:33px !important;
+    height:33px !important;
+}
+
+.rule-title{
+    font-size:29px !important;
+    margin-bottom:9px !important;
+}
+
+.rule-text{
+    font-size:19px !important;
+    line-height:2 !important;
+}
+
+.final-message{
+    text-shadow:0 3px 15px rgba(0,0,0,.55);
+}
+
+.final-sub{
+    margin-top:14px !important;
+}
+
+@media(max-width:500px){
+    .section{
+        padding:68px 14px !important;
+    }
+
+    .section + .section{
+        padding-top:68px !important;
+    }
+
+    .section::before{
+        left:8%;
+        right:8%;
+    }
+
+    .date-boxes{
+        gap:12px !important;
+    }
+
+    .info-box{
+        min-width:135px !important;
+    }
+
+    .hall-card img{
+        height:245px !important;
+    }
+
+    .countdown{
+        gap:7px !important;
+    }
+
+    .count-box{
+        padding:14px 3px !important;
+    }
+
+    .rules{
+        gap:28px !important;
+    }
+
+    .rule-card{
+        padding:29px 17px !important;
+    }
+
+    .rule-title{
+        font-size:26px !important;
+    }
+
+    .rule-text{
+        font-size:17px !important;
+    }
+}
+</style>
+
+
+<style id="photography-section-style">
+.no-photography-section{
+    padding-top:35px !important;
+    padding-bottom:75px !important;
+}
+.photography-card{
+    border-color:rgba(225,183,113,.72) !important;
+    background:linear-gradient(145deg,rgba(67,31,18,.82),rgba(37,17,10,.76)) !important;
+}
+.photography-card .rule-icon{
+    color:#e7bd7b !important;
+    border-color:rgba(225,183,113,.82) !important;
+}
+@media(max-width:500px){
+    .no-photography-section{
+        padding-top:25px !important;
+        padding-bottom:60px !important;
+    }
+}
+</style>
+
+
+<style id="premium-camera-icon">
+.photography-card .rule-icon{
+    width:76px !important;
+    height:76px !important;
+    border:1px solid rgba(231,189,123,.65) !important;
+    border-radius:50% !important;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255,231,190,.12), transparent 48%),
+        rgba(90,47,27,.30) !important;
+    color:#f0cf95 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.28),
+        inset 0 0 18px rgba(255,224,177,.06) !important;
+}
+.photography-card .rule-icon svg{
+    width:42px !important;
+    height:42px !important;
+    display:block !important;
+    filter:drop-shadow(0 2px 5px rgba(0,0,0,.25));
+}
+@media(max-width:500px){
+    .photography-card .rule-icon{
+        width:70px !important;
+        height:70px !important;
+    }
+    .photography-card .rule-icon svg{
+        width:39px !important;
+        height:39px !important;
+    }
+}
+</style>
+
+
+<style id="premium-date-time">
+/* موعد فرحتنا — premium date/time cards */
+.date-boxes{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:18px !important;
+    max-width:560px !important;
+    margin:32px auto 0 !important;
+}
+
+.info-box{
+    position:relative !important;
+    min-width:0 !important;
+    padding:25px 16px 21px !important;
+    border:1px solid rgba(235,196,133,.65) !important;
+    border-radius:24px !important;
+    background:
+        linear-gradient(145deg,rgba(72,35,20,.84),rgba(39,18,10,.76)) !important;
+    box-shadow:
+        0 14px 32px rgba(0,0,0,.30),
+        inset 0 1px rgba(255,240,210,.10) !important;
+    overflow:hidden !important;
+}
+
+.info-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 50% 0%,rgba(238,198,132,.12),transparent 55%);
+    pointer-events:none;
+}
+
+.info-icon{
+    width:58px;
+    height:58px;
+    margin:0 auto 12px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#f0cc91;
+    border:1px solid rgba(239,201,140,.62);
+    background:rgba(119,67,38,.20);
+    box-shadow:inset 0 0 16px rgba(255,223,174,.06);
+}
+
+.info-icon svg{
+    width:29px;
+    height:29px;
+}
+
+.info-label{
+    position:relative;
+    font-size:18px !important;
+    color:#d9b57b !important;
+    margin-bottom:7px !important;
+}
+
+.info-value{
+    position:relative;
+    font-size:25px !important;
+    color:#fff0d2 !important;
+    font-weight:600;
+}
+
+/* تحسين العنوان */
+.date-title{
+    font-size:clamp(28px,7vw,39px) !important;
+    color:#ffe5b9 !important;
+    margin-bottom:8px !important;
+}
+
+@media(max-width:500px){
+    .date-boxes{
+        gap:12px !important;
+        margin-top:27px !important;
+    }
+    .info-box{
+        padding:21px 10px 18px !important;
+        border-radius:20px !important;
+    }
+    .info-icon{
+        width:52px;
+        height:52px;
+        margin-bottom:10px;
+    }
+    .info-icon svg{
+        width:26px;
+        height:26px;
+    }
+    .info-label{
+        font-size:16px !important;
+    }
+    .info-value{
+        font-size:22px !important;
+    }
+}
+</style>
+
+
+
+<style id="location-qr-style">
+.location-qr{
+    margin:24px auto 6px;
+    padding:14px;
+    width:fit-content;
+    background:#fff5e1;
+    border:1px solid rgba(225,183,113,.8);
+    border-radius:18px;
+    box-shadow:0 10px 28px rgba(0,0,0,.30);
+}
+.location-qr svg{
+    display:block;
+    width:180px;
+    height:180px;
+}
+.location-qr-title{
+    margin-top:13px;
+    color:#ffe5b9;
+    font-size:19px;
+    text-shadow:0 2px 8px rgba(0,0,0,.55);
+}
+@media(max-width:500px){
+    .location-qr{padding:10px;border-radius:15px}
+    .location-qr svg{width:150px;height:150px}
+    .location-qr-title{font-size:17px}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     واجهة الدعوة
+========================= -->
+
+<div class="cover-screen" id="cover">
+
+    <img
+        src="cover-rania-mahdi.png"
+        alt="Rania & Mahdi">
+
+    <div class="open-hint">
+        اضغط للفتح
+    </div>
+
+</div>
+
+
+<!-- =========================
+     زر الموسيقى
+========================= -->
+
+<button
+    class="music-button"
+    id="musicButton"
+    aria-label="تشغيل أو إيقاف الموسيقى">
+
+    ♪
+
+</button>
+
+
+<!-- =========================
+     الدعوة
+========================= -->
+
+<main class="invitation" id="invitation">
+
+
+    <!-- القسم الأول -->
+
+    <section class="section">
+
+        <div class="quran">
+            وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم
+            مِّنْ أَنفُسِكُمْ أَزْوَاجًا
+            لِّتَسْكُنُوا إِلَيْهَا
+            وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+        </div>
+
+        <div class="ornament"></div>
+
+        <p class="invitation-text">
+            بكل الحب والفرح
+            نتشرف بدعوتكم لمشاركتنا
+            فرحة حفل خطوبتنا
+        </p>
+
+        <div class="names">
+            <span>Rania</span>
+            <span class="amp">&amp;</span>
+            <span>Mahdi</span>
+        </div>
+
+        <div class="ornament"></div>
+
+        <p class="invitation-text">
+            حضوركم يزيد فرحتنا
+            ويجعل يومنا أجمل
+        </p>
+
+    </section>
+
+
+    <!-- التاريخ والساعة -->
+
+    <section class="section">
+
+        <h2 class="date-title">
+            موعد لقائنا
+        </h2>
+
+        <div class="date-boxes">
+
+            <div class="info-box">
+                
+<div class="info-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.55"
+         stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.5" y="5" width="17" height="15" rx="2.5"/>
+        <path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17"/>
+        <path d="M7.5 13h.01M11.5 13h.01M15.5 13h.01M7.5 16.5h.01M11.5 16.5h.01"/>
+    </svg>
+</div>
+
+                <span class="info-label">التاريخ</span>
+                <span class="info-value">
+                    30 OCTOBRE 2026
+                </span>
+            </div>
+
+            <div class="info-box">
+                
+<div class="info-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.55"
+         stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="8.5"/>
+        <path d="M12 7v5l3.5 2"/>
+        <path d="M8.5 3.8l-1.7-1M15.5 3.8l1.7-1"/>
+    </svg>
+</div>
+
+                <span class="info-label">الساعة</span>
+                <span class="info-value">
+                    15:00
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- القاعة -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            مكان الاحتفال
+        </h2>
+
+        <div class="ornament"></div>
+
+        <div class="hall-card">
+
+            <img
+                src="hall.jpg"
+                alt="Salle des fêtes Boulbair Luxe">
+
+            <div class="hall-name">
+                Salle des Fêtes
+                <br>
+                Boulbair Luxe
+            </div>
+
+            <a
+                class="map-button"
+                href="#"
+                target="_blank"
+                rel="noopener">
+
+                <span>⌖</span>
+                الوصول إلى الموقع
+
+            </a>
+
+            <!-- QR Code حقيقي — موقع القاعة -->
+            <div class="location-qr" aria-label="رمز QR لموقع القاعة">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" role="img" aria-label="رمز QR لموقع القاعة" shape-rendering="crispEdges"><rect width="41" height="41" fill="#fff5e1"/><g fill="#2b160e"><rect x="0" y="0" width="1" height="1"/><rect x="1" y="0" width="1" height="1"/><rect x="2" y="0" width="1" height="1"/><rect x="3" y="0" width="1" height="1"/><rect x="4" y="0" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="11" y="0" width="1" height="1"/><rect x="12" y="0" width="1" height="1"/><rect x="14" y="0" width="1" height="1"/><rect x="15" y="0" width="1" height="1"/><rect x="17" y="0" width="1" height="1"/><rect x="19" y="0" width="1" height="1"/><rect x="25" y="0" width="1" height="1"/><rect x="29" y="0" width="1" height="1"/><rect x="30" y="0" width="1" height="1"/><rect x="32" y="0" width="1" height="1"/><rect x="34" y="0" width="1" height="1"/><rect x="35" y="0" width="1" height="1"/><rect x="36" y="0" width="1" height="1"/><rect x="37" y="0" width="1" height="1"/><rect x="38" y="0" width="1" height="1"/><rect x="39" y="0" width="1" height="1"/><rect x="40" y="0" width="1" height="1"/><rect x="0" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="13" y="1" width="1" height="1"/><rect x="14" y="1" width="1" height="1"/><rect x="15" y="1" width="1" height="1"/><rect x="18" y="1" width="1" height="1"/><rect x="20" y="1" width="1" height="1"/><rect x="25" y="1" width="1" height="1"/><rect x="28" y="1" width="1" height="1"/><rect x="31" y="1" width="1" height="1"/><rect x="32" y="1" width="1" height="1"/><rect x="34" y="1" width="1" height="1"/><rect x="40" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="9" y="2" width="1" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="12" y="2" width="1" height="1"/><rect x="13" y="2" width="1" height="1"/><rect x="14" y="2" width="1" height="1"/><rect x="15" y="2" width="1" height="1"/><rect x="16" y="2" width="1" height="1"/><rect x="17" y="2" width="1" height="1"/><rect x="18" y="2" width="1" height="1"/><rect x="19" y="2" width="1" height="1"/><rect x="21" y="2" width="1" height="1"/><rect x="23" y="2" width="1" height="1"/><rect x="27" y="2" width="1" height="1"/><rect x="28" y="2" width="1" height="1"/><rect x="30" y="2" width="1" height="1"/><rect x="32" y="2" width="1" height="1"/><rect x="34" y="2" width="1" height="1"/><rect x="36" y="2" width="1" height="1"/><rect x="37" y="2" width="1" height="1"/><rect x="38" y="2" width="1" height="1"/><rect x="40" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="12" y="3" width="1" height="1"/><rect x="13" y="3" width="1" height="1"/><rect x="16" y="3" width="1" height="1"/><rect x="17" y="3" width="1" height="1"/><rect x="20" y="3" width="1" height="1"/><rect x="21" y="3" width="1" height="1"/><rect x="23" y="3" width="1" height="1"/><rect x="24" y="3" width="1" height="1"/><rect x="26" y="3" width="1" height="1"/><rect x="27" y="3" width="1" height="1"/><rect x="34" y="3" width="1" height="1"/><rect x="36" y="3" width="1" height="1"/><rect x="37" y="3" width="1" height="1"/><rect x="38" y="3" width="1" height="1"/><rect x="40" y="3" width="1" height="1"/><rect x="0" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="10" y="4" width="1" height="1"/><rect x="14" y="4" width="1" height="1"/><rect x="16" y="4" width="1" height="1"/><rect x="19" y="4" width="1" height="1"/><rect x="20" y="4" width="1" height="1"/><rect x="21" y="4" width="1" height="1"/><rect x="23" y="4" width="1" height="1"/><rect x="25" y="4" width="1" height="1"/><rect x="26" y="4" width="1" height="1"/><rect x="27" y="4" width="1" height="1"/><rect x="28" y="4" width="1" height="1"/><rect x="31" y="4" width="1" height="1"/><rect x="32" y="4" width="1" height="1"/><rect x="34" y="4" width="1" height="1"/><rect x="36" y="4" width="1" height="1"/><rect x="37" y="4" width="1" height="1"/><rect x="38" y="4" width="1" height="1"/><rect x="40" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="9" y="5" width="1" height="1"/><rect x="16" y="5" width="1" height="1"/><rect x="20" y="5" width="1" height="1"/><rect x="21" y="5" width="1" height="1"/><rect x="23" y="5" width="1" height="1"/><rect x="24" y="5" width="1" height="1"/><rect x="26" y="5" width="1" height="1"/><rect x="30" y="5" width="1" height="1"/><rect x="31" y="5" width="1" height="1"/><rect x="32" y="5" width="1" height="1"/><rect x="34" y="5" width="1" height="1"/><rect x="40" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="5" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="16" y="6" width="1" height="1"/><rect x="18" y="6" width="1" height="1"/><rect x="20" y="6" width="1" height="1"/><rect x="22" y="6" width="1" height="1"/><rect x="24" y="6" width="1" height="1"/><rect x="26" y="6" width="1" height="1"/><rect x="28" y="6" width="1" height="1"/><rect x="30" y="6" width="1" height="1"/><rect x="32" y="6" width="1" height="1"/><rect x="34" y="6" width="1" height="1"/><rect x="35" y="6" width="1" height="1"/><rect x="36" y="6" width="1" height="1"/><rect x="37" y="6" width="1" height="1"/><rect x="38" y="6" width="1" height="1"/><rect x="39" y="6" width="1" height="1"/><rect x="40" y="6" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="9" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="12" y="7" width="1" height="1"/><rect x="13" y="7" width="1" height="1"/><rect x="15" y="7" width="1" height="1"/><rect x="16" y="7" width="1" height="1"/><rect x="19" y="7" width="1" height="1"/><rect x="21" y="7" width="1" height="1"/><rect x="23" y="7" width="1" height="1"/><rect x="24" y="7" width="1" height="1"/><rect x="25" y="7" width="1" height="1"/><rect x="27" y="7" width="1" height="1"/><rect x="29" y="7" width="1" height="1"/><rect x="30" y="7" width="1" height="1"/><rect x="2" y="8" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="7" y="8" width="1" height="1"/><rect x="8" y="8" width="1" height="1"/><rect x="9" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="13" y="8" width="1" height="1"/><rect x="14" y="8" width="1" height="1"/><rect x="17" y="8" width="1" height="1"/><rect x="19" y="8" width="1" height="1"/><rect x="21" y="8" width="1" height="1"/><rect x="22" y="8" width="1" height="1"/><rect x="23" y="8" width="1" height="1"/><rect x="26" y="8" width="1" height="1"/><rect x="28" y="8" width="1" height="1"/><rect x="29" y="8" width="1" height="1"/><rect x="30" y="8" width="1" height="1"/><rect x="33" y="8" width="1" height="1"/><rect x="34" y="8" width="1" height="1"/><rect x="36" y="8" width="1" height="1"/><rect x="0" y="9" width="1" height="1"/><rect x="2" y="9" width="1" height="1"/><rect x="3" y="9" width="1" height="1"/><rect x="4" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="12" y="9" width="1" height="1"/><rect x="14" y="9" width="1" height="1"/><rect x="18" y="9" width="1" height="1"/><rect x="19" y="9" width="1" height="1"/><rect x="20" y="9" width="1" height="1"/><rect x="22" y="9" width="1" height="1"/><rect x="26" y="9" width="1" height="1"/><rect x="28" y="9" width="1" height="1"/><rect x="29" y="9" width="1" height="1"/><rect x="30" y="9" width="1" height="1"/><rect x="31" y="9" width="1" height="1"/><rect x="32" y="9" width="1" height="1"/><rect x="33" y="9" width="1" height="1"/><rect x="34" y="9" width="1" height="1"/><rect x="35" y="9" width="1" height="1"/><rect x="36" y="9" width="1" height="1"/><rect x="38" y="9" width="1" height="1"/><rect x="39" y="9" width="1" height="1"/><rect x="40" y="9" width="1" height="1"/><rect x="3" y="10" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="8" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="12" y="10" width="1" height="1"/><rect x="13" y="10" width="1" height="1"/><rect x="14" y="10" width="1" height="1"/><rect x="15" y="10" width="1" height="1"/><rect x="16" y="10" width="1" height="1"/><rect x="21" y="10" width="1" height="1"/><rect x="22" y="10" width="1" height="1"/><rect x="23" y="10" width="1" height="1"/><rect x="24" y="10" width="1" height="1"/><rect x="26" y="10" width="1" height="1"/><rect x="30" y="10" width="1" height="1"/><rect x="35" y="10" width="1" height="1"/><rect x="38" y="10" width="1" height="1"/><rect x="39" y="10" width="1" height="1"/><rect x="1" y="11" width="1" height="1"/><rect x="2" y="11" width="1" height="1"/><rect x="3" y="11" width="1" height="1"/><rect x="4" y="11" width="1" height="1"/><rect x="8" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="11" y="11" width="1" height="1"/><rect x="15" y="11" width="1" height="1"/><rect x="17" y="11" width="1" height="1"/><rect x="18" y="11" width="1" height="1"/><rect x="19" y="11" width="1" height="1"/><rect x="25" y="11" width="1" height="1"/><rect x="27" y="11" width="1" height="1"/><rect x="30" y="11" width="1" height="1"/><rect x="32" y="11" width="1" height="1"/><rect x="35" y="11" width="1" height="1"/><rect x="0" y="12" width="1" height="1"/><rect x="4" y="12" width="1" height="1"/><rect x="5" y="12" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="11" y="12" width="1" height="1"/><rect x="18" y="12" width="1" height="1"/><rect x="20" y="12" width="1" height="1"/><rect x="21" y="12" width="1" height="1"/><rect x="23" y="12" width="1" height="1"/><rect x="25" y="12" width="1" height="1"/><rect x="26" y="12" width="1" height="1"/><rect x="29" y="12" width="1" height="1"/><rect x="30" y="12" width="1" height="1"/><rect x="31" y="12" width="1" height="1"/><rect x="37" y="12" width="1" height="1"/><rect x="38" y="12" width="1" height="1"/><rect x="39" y="12" width="1" height="1"/><rect x="4" y="13" width="1" height="1"/><rect x="5" y="13" width="1" height="1"/><rect x="7" y="13" width="1" height="1"/><rect x="9" y="13" width="1" height="1"/><rect x="10" y="13" width="1" height="1"/><rect x="11" y="13" width="1" height="1"/><rect x="13" y="13" width="1" height="1"/><rect x="15" y="13" width="1" height="1"/><rect x="16" y="13" width="1" height="1"/><rect x="17" y="13" width="1" height="1"/><rect x="18" y="13" width="1" height="1"/><rect x="19" y="13" width="1" height="1"/><rect x="21" y="13" width="1" height="1"/><rect x="24" y="13" width="1" height="1"/><rect x="29" y="13" width="1" height="1"/><rect x="30" y="13" width="1" height="1"/><rect x="31" y="13" width="1" height="1"/><rect x="32" y="13" width="1" height="1"/><rect x="34" y="13" width="1" height="1"/><rect x="35" y="13" width="1" height="1"/><rect x="37" y="13" width="1" height="1"/><rect x="40" y="13" width="1" height="1"/><rect x="0" y="14" width="1" height="1"/><rect x="1" y="14" width="1" height="1"/><rect x="2" y="14" width="1" height="1"/><rect x="4" y="14" width="1" height="1"/><rect x="5" y="14" width="1" height="1"/><rect x="6" y="14" width="1" height="1"/><rect x="8" y="14" width="1" height="1"/><rect x="10" y="14" width="1" height="1"/><rect x="12" y="14" width="1" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="14" y="14" width="1" height="1"/><rect x="19" y="14" width="1" height="1"/><rect x="21" y="14" width="1" height="1"/><rect x="22" y="14" width="1" height="1"/><rect x="29" y="14" width="1" height="1"/><rect x="31" y="14" width="1" height="1"/><rect x="34" y="14" width="1" height="1"/><rect x="35" y="14" width="1" height="1"/><rect x="38" y="14" width="1" height="1"/><rect x="39" y="14" width="1" height="1"/><rect x="40" y="14" width="1" height="1"/><rect x="5" y="15" width="1" height="1"/><rect x="7" y="15" width="1" height="1"/><rect x="9" y="15" width="1" height="1"/><rect x="10" y="15" width="1" height="1"/><rect x="14" y="15" width="1" height="1"/><rect x="15" y="15" width="1" height="1"/><rect x="16" y="15" width="1" height="1"/><rect x="23" y="15" width="1" height="1"/><rect x="24" y="15" width="1" height="1"/><rect x="26" y="15" width="1" height="1"/><rect x="27" y="15" width="1" height="1"/><rect x="28" y="15" width="1" height="1"/><rect x="29" y="15" width="1" height="1"/><rect x="31" y="15" width="1" height="1"/><rect x="34" y="15" width="1" height="1"/><rect x="35" y="15" width="1" height="1"/><rect x="36" y="15" width="1" height="1"/><rect x="37" y="15" width="1" height="1"/><rect x="39" y="15" width="1" height="1"/><rect x="3" y="16" width="1" height="1"/><rect x="5" y="16" width="1" height="1"/><rect x="6" y="16" width="1" height="1"/><rect x="7" y="16" width="1" height="1"/><rect x="8" y="16" width="1" height="1"/><rect x="22" y="16" width="1" height="1"/><rect x="23" y="16" width="1" height="1"/><rect x="26" y="16" width="1" height="1"/><rect x="28" y="16" width="1" height="1"/><rect x="32" y="16" width="1" height="1"/><rect x="36" y="16" width="1" height="1"/><rect x="39" y="16" width="1" height="1"/><rect x="40" y="16" width="1" height="1"/><rect x="3" y="17" width="1" height="1"/><rect x="4" y="17" width="1" height="1"/><rect x="5" y="17" width="1" height="1"/><rect x="8" y="17" width="1" height="1"/><rect x="10" y="17" width="1" height="1"/><rect x="11" y="17" width="1" height="1"/><rect x="13" y="17" width="1" height="1"/><rect x="14" y="17" width="1" height="1"/><rect x="19" y="17" width="1" height="1"/><rect x="21" y="17" width="1" height="1"/><rect x="22" y="17" width="1" height="1"/><rect x="24" y="17" width="1" height="1"/><rect x="27" y="17" width="1" height="1"/><rect x="29" y="17" width="1" height="1"/><rect x="31" y="17" width="1" height="1"/><rect x="32" y="17" width="1" height="1"/><rect x="33" y="17" width="1" height="1"/><rect x="35" y="17" width="1" height="1"/><rect x="38" y="17" width="1" height="1"/><rect x="0" y="18" width="1" height="1"/><rect x="1" y="18" width="1" height="1"/><rect x="2" y="18" width="1" height="1"/><rect x="3" y="18" width="1" height="1"/><rect x="4" y="18" width="1" height="1"/><rect x="5" y="18" width="1" height="1"/><rect x="6" y="18" width="1" height="1"/><rect x="7" y="18" width="1" height="1"/><rect x="8" y="18" width="1" height="1"/><rect x="9" y="18" width="1" height="1"/><rect x="10" y="18" width="1" height="1"/><rect x="12" y="18" width="1" height="1"/><rect x="14" y="18" width="1" height="1"/><rect x="17" y="18" width="1" height="1"/><rect x="18" y="18" width="1" height="1"/><rect x="19" y="18" width="1" height="1"/><rect x="21" y="18" width="1" height="1"/><rect x="24" y="18" width="1" height="1"/><rect x="27" y="18" width="1" height="1"/><rect x="28" y="18" width="1" height="1"/><rect x="32" y="18" width="1" height="1"/><rect x="34" y="18" width="1" height="1"/><rect x="36" y="18" width="1" height="1"/><rect x="0" y="19" width="1" height="1"/><rect x="2" y="19" width="1" height="1"/><rect x="4" y="19" width="1" height="1"/><rect x="5" y="19" width="1" height="1"/><rect x="8" y="19" width="1" height="1"/><rect x="9" y="19" width="1" height="1"/><rect x="12" y="19" width="1" height="1"/><rect x="13" y="19" width="1" height="1"/><rect x="15" y="19" width="1" height="1"/><rect x="19" y="19" width="1" height="1"/><rect x="20" y="19" width="1" height="1"/><rect x="21" y="19" width="1" height="1"/><rect x="25" y="19" width="1" height="1"/><rect x="26" y="19" width="1" height="1"/><rect x="28" y="19" width="1" height="1"/><rect x="29" y="19" width="1" height="1"/><rect x="31" y="19" width="1" height="1"/><rect x="32" y="19" width="1" height="1"/><rect x="34" y="19" width="1" height="1"/><rect x="35" y="19" width="1" height="1"/><rect x="37" y="19" width="1" height="1"/><rect x="38" y="19" width="1" height="1"/><rect x="39" y="19" width="1" height="1"/><rect x="40" y="19" width="1" height="1"/><rect x="1" y="20" width="1" height="1"/><rect x="4" y="20" width="1" height="1"/><rect x="6" y="20" width="1" height="1"/><rect x="7" y="20" width="1" height="1"/><rect x="8" y="20" width="1" height="1"/><rect x="10" y="20" width="1" height="1"/><rect x="12" y="20" width="1" height="1"/><rect x="13" y="20" width="1" height="1"/><rect x="14" y="20" width="1" height="1"/><rect x="15" y="20" width="1" height="1"/><rect x="17" y="20" width="1" height="1"/><rect x="21" y="20" width="1" height="1"/><rect x="23" y="20" width="1" height="1"/><rect x="24" y="20" width="1" height="1"/><rect x="29" y="20" width="1" height="1"/><rect x="30" y="20" width="1" height="1"/><rect x="33" y="20" width="1" height="1"/><rect x="34" y="20" width="1" height="1"/><rect x="36" y="20" width="1" height="1"/><rect x="37" y="20" width="1" height="1"/><rect x="38" y="20" width="1" height="1"/><rect x="39" y="20" width="1" height="1"/><rect x="0" y="21" width="1" height="1"/><rect x="2" y="21" width="1" height="1"/><rect x="3" y="21" width="1" height="1"/><rect x="9" y="21" width="1" height="1"/><rect x="10" y="21" width="1" height="1"/><rect x="13" y="21" width="1" height="1"/><rect x="16" y="21" width="1" height="1"/><rect x="18" y="21" width="1" height="1"/><rect x="19" y="21" width="1" height="1"/><rect x="20" y="21" width="1" height="1"/><rect x="22" y="21" width="1" height="1"/><rect x="23" y="21" width="1" height="1"/><rect x="27" y="21" width="1" height="1"/><rect x="28" y="21" width="1" height="1"/><rect x="31" y="21" width="1" height="1"/><rect x="32" y="21" width="1" height="1"/><rect x="33" y="21" width="1" height="1"/><rect x="34" y="21" width="1" height="1"/><rect x="35" y="21" width="1" height="1"/><rect x="36" y="21" width="1" height="1"/><rect x="37" y="21" width="1" height="1"/><rect x="38" y="21" width="1" height="1"/><rect x="39" y="21" width="1" height="1"/><rect x="40" y="21" width="1" height="1"/><rect x="0" y="22" width="1" height="1"/><rect x="5" y="22" width="1" height="1"/><rect x="6" y="22" width="1" height="1"/><rect x="7" y="22" width="1" height="1"/><rect x="8" y="22" width="1" height="1"/><rect x="9" y="22" width="1" height="1"/><rect x="10" y="22" width="1" height="1"/><rect x="11" y="22" width="1" height="1"/><rect x="12" y="22" width="1" height="1"/><rect x="14" y="22" width="1" height="1"/><rect x="19" y="22" width="1" height="1"/><rect x="21" y="22" width="1" height="1"/><rect x="22" y="22" width="1" height="1"/><rect x="23" y="22" width="1" height="1"/><rect x="25" y="22" width="1" height="1"/><rect x="26" y="22" width="1" height="1"/><rect x="28" y="22" width="1" height="1"/><rect x="29" y="22" width="1" height="1"/><rect x="33" y="22" width="1" height="1"/><rect x="35" y="22" width="1" height="1"/><rect x="37" y="22" width="1" height="1"/><rect x="39" y="22" width="1" height="1"/><rect x="1" y="23" width="1" height="1"/><rect x="2" y="23" width="1" height="1"/><rect x="3" y="23" width="1" height="1"/><rect x="5" y="23" width="1" height="1"/><rect x="7" y="23" width="1" height="1"/><rect x="8" y="23" width="1" height="1"/><rect x="11" y="23" width="1" height="1"/><rect x="13" y="23" width="1" height="1"/><rect x="16" y="23" width="1" height="1"/><rect x="17" y="23" width="1" height="1"/><rect x="18" y="23" width="1" height="1"/><rect x="20" y="23" width="1" height="1"/><rect x="24" y="23" width="1" height="1"/><rect x="25" y="23" width="1" height="1"/><rect x="26" y="23" width="1" height="1"/><rect x="30" y="23" width="1" height="1"/><rect x="32" y="23" width="1" height="1"/><rect x="33" y="23" width="1" height="1"/><rect x="34" y="23" width="1" height="1"/><rect x="35" y="23" width="1" height="1"/><rect x="36" y="23" width="1" height="1"/><rect x="39" y="23" width="1" height="1"/><rect x="40" y="23" width="1" height="1"/><rect x="2" y="24" width="1" height="1"/><rect x="4" y="24" width="1" height="1"/><rect x="6" y="24" width="1" height="1"/><rect x="10" y="24" width="1" height="1"/><rect x="11" y="24" width="1" height="1"/><rect x="12" y="24" width="1" height="1"/><rect x="13" y="24" width="1" height="1"/><rect x="14" y="24" width="1" height="1"/><rect x="15" y="24" width="1" height="1"/><rect x="17" y="24" width="1" height="1"/><rect x="19" y="24" width="1" height="1"/><rect x="21" y="24" width="1" height="1"/><rect x="25" y="24" width="1" height="1"/><rect x="26" y="24" width="1" height="1"/><rect x="29" y="24" width="1" height="1"/><rect x="31" y="24" width="1" height="1"/><rect x="37" y="24" width="1" height="1"/><rect x="38" y="24" width="1" height="1"/><rect x="39" y="24" width="1" height="1"/><rect x="40" y="24" width="1" height="1"/><rect x="2" y="25" width="1" height="1"/><rect x="4" y="25" width="1" height="1"/><rect x="5" y="25" width="1" height="1"/><rect x="7" y="25" width="1" height="1"/><rect x="8" y="25" width="1" height="1"/><rect x="9" y="25" width="1" height="1"/><rect x="13" y="25" width="1" height="1"/><rect x="17" y="25" width="1" height="1"/><rect x="18" y="25" width="1" height="1"/><rect x="20" y="25" width="1" height="1"/><rect x="22" y="25" width="1" height="1"/><rect x="23" y="25" width="1" height="1"/><rect x="24" y="25" width="1" height="1"/><rect x="25" y="25" width="1" height="1"/><rect x="26" y="25" width="1" height="1"/><rect x="27" y="25" width="1" height="1"/><rect x="30" y="25" width="1" height="1"/><rect x="31" y="25" width="1" height="1"/><rect x="32" y="25" width="1" height="1"/><rect x="33" y="25" width="1" height="1"/><rect x="34" y="25" width="1" height="1"/><rect x="37" y="25" width="1" height="1"/><rect x="38" y="25" width="1" height="1"/><rect x="0" y="26" width="1" height="1"/><rect x="4" y="26" width="1" height="1"/><rect x="5" y="26" width="1" height="1"/><rect x="6" y="26" width="1" height="1"/><rect x="7" y="26" width="1" height="1"/><rect x="10" y="26" width="1" height="1"/><rect x="11" y="26" width="1" height="1"/><rect x="12" y="26" width="1" height="1"/><rect x="14" y="26" width="1" height="1"/><rect x="16" y="26" width="1" height="1"/><rect x="17" y="26" width="1" height="1"/><rect x="18" y="26" width="1" height="1"/><rect x="22" y="26" width="1" height="1"/><rect x="23" y="26" width="1" height="1"/><rect x="24" y="26" width="1" height="1"/><rect x="25" y="26" width="1" height="1"/><rect x="26" y="26" width="1" height="1"/><rect x="29" y="26" width="1" height="1"/><rect x="30" y="26" width="1" height="1"/><rect x="31" y="26" width="1" height="1"/><rect x="32" y="26" width="1" height="1"/><rect x="34" y="26" width="1" height="1"/><rect x="35" y="26" width="1" height="1"/><rect x="36" y="26" width="1" height="1"/><rect x="37" y="26" width="1" height="1"/><rect x="39" y="26" width="1" height="1"/><rect x="40" y="26" width="1" height="1"/><rect x="2" y="27" width="1" height="1"/><rect x="3" y="27" width="1" height="1"/><rect x="4" y="27" width="1" height="1"/><rect x="5" y="27" width="1" height="1"/><rect x="8" y="27" width="1" height="1"/><rect x="9" y="27" width="1" height="1"/><rect x="11" y="27" width="1" height="1"/><rect x="12" y="27" width="1" height="1"/><rect x="14" y="27" width="1" height="1"/><rect x="19" y="27" width="1" height="1"/><rect x="20" y="27" width="1" height="1"/><rect x="21" y="27" width="1" height="1"/><rect x="24" y="27" width="1" height="1"/><rect x="31" y="27" width="1" height="1"/><rect x="32" y="27" width="1" height="1"/><rect x="37" y="27" width="1" height="1"/><rect x="40" y="27" width="1" height="1"/><rect x="0" y="28" width="1" height="1"/><rect x="1" y="28" width="1" height="1"/><rect x="3" y="28" width="1" height="1"/><rect x="4" y="28" width="1" height="1"/><rect x="5" y="28" width="1" height="1"/><rect x="6" y="28" width="1" height="1"/><rect x="7" y="28" width="1" height="1"/><rect x="8" y="28" width="1" height="1"/><rect x="9" y="28" width="1" height="1"/><rect x="11" y="28" width="1" height="1"/><rect x="14" y="28" width="1" height="1"/><rect x="16" y="28" width="1" height="1"/><rect x="19" y="28" width="1" height="1"/><rect x="21" y="28" width="1" height="1"/><rect x="22" y="28" width="1" height="1"/><rect x="24" y="28" width="1" height="1"/><rect x="25" y="28" width="1" height="1"/><rect x="30" y="28" width="1" height="1"/><rect x="31" y="28" width="1" height="1"/><rect x="33" y="28" width="1" height="1"/><rect x="35" y="28" width="1" height="1"/><rect x="36" y="28" width="1" height="1"/><rect x="37" y="28" width="1" height="1"/><rect x="40" y="28" width="1" height="1"/><rect x="1" y="29" width="1" height="1"/><rect x="2" y="29" width="1" height="1"/><rect x="7" y="29" width="1" height="1"/><rect x="11" y="29" width="1" height="1"/><rect x="14" y="29" width="1" height="1"/><rect x="17" y="29" width="1" height="1"/><rect x="21" y="29" width="1" height="1"/><rect x="23" y="29" width="1" height="1"/><rect x="25" y="29" width="1" height="1"/><rect x="27" y="29" width="1" height="1"/><rect x="29" y="29" width="1" height="1"/><rect x="30" y="29" width="1" height="1"/><rect x="32" y="29" width="1" height="1"/><rect x="35" y="29" width="1" height="1"/><rect x="0" y="30" width="1" height="1"/><rect x="2" y="30" width="1" height="1"/><rect x="4" y="30" width="1" height="1"/><rect x="6" y="30" width="1" height="1"/><rect x="9" y="30" width="1" height="1"/><rect x="17" y="30" width="1" height="1"/><rect x="20" y="30" width="1" height="1"/><rect x="21" y="30" width="1" height="1"/><rect x="23" y="30" width="1" height="1"/><rect x="24" y="30" width="1" height="1"/><rect x="27" y="30" width="1" height="1"/><rect x="29" y="30" width="1" height="1"/><rect x="30" y="30" width="1" height="1"/><rect x="32" y="30" width="1" height="1"/><rect x="33" y="30" width="1" height="1"/><rect x="34" y="30" width="1" height="1"/><rect x="36" y="30" width="1" height="1"/><rect x="37" y="30" width="1" height="1"/><rect x="38" y="30" width="1" height="1"/><rect x="2" y="31" width="1" height="1"/><rect x="3" y="31" width="1" height="1"/><rect x="7" y="31" width="1" height="1"/><rect x="11" y="31" width="1" height="1"/><rect x="12" y="31" width="1" height="1"/><rect x="14" y="31" width="1" height="1"/><rect x="15" y="31" width="1" height="1"/><rect x="16" y="31" width="1" height="1"/><rect x="19" y="31" width="1" height="1"/><rect x="20" y="31" width="1" height="1"/><rect x="22" y="31" width="1" height="1"/><rect x="23" y="31" width="1" height="1"/><rect x="29" y="31" width="1" height="1"/><rect x="32" y="31" width="1" height="1"/><rect x="34" y="31" width="1" height="1"/><rect x="36" y="31" width="1" height="1"/><rect x="37" y="31" width="1" height="1"/><rect x="38" y="31" width="1" height="1"/><rect x="39" y="31" width="1" height="1"/><rect x="1" y="32" width="1" height="1"/><rect x="4" y="32" width="1" height="1"/><rect x="6" y="32" width="1" height="1"/><rect x="7" y="32" width="1" height="1"/><rect x="9" y="32" width="1" height="1"/><rect x="14" y="32" width="1" height="1"/><rect x="17" y="32" width="1" height="1"/><rect x="22" y="32" width="1" height="1"/><rect x="23" y="32" width="1" height="1"/><rect x="24" y="32" width="1" height="1"/><rect x="25" y="32" width="1" height="1"/><rect x="26" y="32" width="1" height="1"/><rect x="27" y="32" width="1" height="1"/><rect x="28" y="32" width="1" height="1"/><rect x="29" y="32" width="1" height="1"/><rect x="30" y="32" width="1" height="1"/><rect x="32" y="32" width="1" height="1"/><rect x="33" y="32" width="1" height="1"/><rect x="34" y="32" width="1" height="1"/><rect x="35" y="32" width="1" height="1"/><rect x="36" y="32" width="1" height="1"/><rect x="37" y="32" width="1" height="1"/><rect x="38" y="32" width="1" height="1"/><rect x="40" y="32" width="1" height="1"/><rect x="8" y="33" width="1" height="1"/><rect x="9" y="33" width="1" height="1"/><rect x="10" y="33" width="1" height="1"/><rect x="14" y="33" width="1" height="1"/><rect x="15" y="33" width="1" height="1"/><rect x="16" y="33" width="1" height="1"/><rect x="18" y="33" width="1" height="1"/><rect x="19" y="33" width="1" height="1"/><rect x="20" y="33" width="1" height="1"/><rect x="21" y="33" width="1" height="1"/><rect x="22" y="33" width="1" height="1"/><rect x="24" y="33" width="1" height="1"/><rect x="26" y="33" width="1" height="1"/><rect x="28" y="33" width="1" height="1"/><rect x="32" y="33" width="1" height="1"/><rect x="36" y="33" width="1" height="1"/><rect x="37" y="33" width="1" height="1"/><rect x="39" y="33" width="1" height="1"/><rect x="40" y="33" width="1" height="1"/><rect x="0" y="34" width="1" height="1"/><rect x="1" y="34" width="1" height="1"/><rect x="2" y="34" width="1" height="1"/><rect x="3" y="34" width="1" height="1"/><rect x="4" y="34" width="1" height="1"/><rect x="5" y="34" width="1" height="1"/><rect x="6" y="34" width="1" height="1"/><rect x="8" y="34" width="1" height="1"/><rect x="10" y="34" width="1" height="1"/><rect x="11" y="34" width="1" height="1"/><rect x="15" y="34" width="1" height="1"/><rect x="16" y="34" width="1" height="1"/><rect x="17" y="34" width="1" height="1"/><rect x="19" y="34" width="1" height="1"/><rect x="24" y="34" width="1" height="1"/><rect x="25" y="34" width="1" height="1"/><rect x="29" y="34" width="1" height="1"/><rect x="30" y="34" width="1" height="1"/><rect x="31" y="34" width="1" height="1"/><rect x="32" y="34" width="1" height="1"/><rect x="34" y="34" width="1" height="1"/><rect x="36" y="34" width="1" height="1"/><rect x="37" y="34" width="1" height="1"/><rect x="38" y="34" width="1" height="1"/><rect x="39" y="34" width="1" height="1"/><rect x="0" y="35" width="1" height="1"/><rect x="6" y="35" width="1" height="1"/><rect x="9" y="35" width="1" height="1"/><rect x="11" y="35" width="1" height="1"/><rect x="12" y="35" width="1" height="1"/><rect x="13" y="35" width="1" height="1"/><rect x="17" y="35" width="1" height="1"/><rect x="18" y="35" width="1" height="1"/><rect x="19" y="35" width="1" height="1"/><rect x="21" y="35" width="1" height="1"/><rect x="23" y="35" width="1" height="1"/><rect x="24" y="35" width="1" height="1"/><rect x="25" y="35" width="1" height="1"/><rect x="30" y="35" width="1" height="1"/><rect x="31" y="35" width="1" height="1"/><rect x="32" y="35" width="1" height="1"/><rect x="36" y="35" width="1" height="1"/><rect x="37" y="35" width="1" height="1"/><rect x="39" y="35" width="1" height="1"/><rect x="0" y="36" width="1" height="1"/><rect x="2" y="36" width="1" height="1"/><rect x="3" y="36" width="1" height="1"/><rect x="4" y="36" width="1" height="1"/><rect x="6" y="36" width="1" height="1"/><rect x="10" y="36" width="1" height="1"/><rect x="15" y="36" width="1" height="1"/><rect x="16" y="36" width="1" height="1"/><rect x="17" y="36" width="1" height="1"/><rect x="18" y="36" width="1" height="1"/><rect x="19" y="36" width="1" height="1"/><rect x="20" y="36" width="1" height="1"/><rect x="22" y="36" width="1" height="1"/><rect x="23" y="36" width="1" height="1"/><rect x="24" y="36" width="1" height="1"/><rect x="26" y="36" width="1" height="1"/><rect x="27" y="36" width="1" height="1"/><rect x="28" y="36" width="1" height="1"/><rect x="29" y="36" width="1" height="1"/><rect x="32" y="36" width="1" height="1"/><rect x="33" y="36" width="1" height="1"/><rect x="34" y="36" width="1" height="1"/><rect x="35" y="36" width="1" height="1"/><rect x="36" y="36" width="1" height="1"/><rect x="38" y="36" width="1" height="1"/><rect x="0" y="37" width="1" height="1"/><rect x="2" y="37" width="1" height="1"/><rect x="3" y="37" width="1" height="1"/><rect x="4" y="37" width="1" height="1"/><rect x="6" y="37" width="1" height="1"/><rect x="8" y="37" width="1" height="1"/><rect x="10" y="37" width="1" height="1"/><rect x="12" y="37" width="1" height="1"/><rect x="13" y="37" width="1" height="1"/><rect x="16" y="37" width="1" height="1"/><rect x="17" y="37" width="1" height="1"/><rect x="18" y="37" width="1" height="1"/><rect x="20" y="37" width="1" height="1"/><rect x="27" y="37" width="1" height="1"/><rect x="29" y="37" width="1" height="1"/><rect x="30" y="37" width="1" height="1"/><rect x="31" y="37" width="1" height="1"/><rect x="36" y="37" width="1" height="1"/><rect x="37" y="37" width="1" height="1"/><rect x="38" y="37" width="1" height="1"/><rect x="39" y="37" width="1" height="1"/><rect x="40" y="37" width="1" height="1"/><rect x="0" y="38" width="1" height="1"/><rect x="2" y="38" width="1" height="1"/><rect x="3" y="38" width="1" height="1"/><rect x="4" y="38" width="1" height="1"/><rect x="6" y="38" width="1" height="1"/><rect x="8" y="38" width="1" height="1"/><rect x="11" y="38" width="1" height="1"/><rect x="12" y="38" width="1" height="1"/><rect x="13" y="38" width="1" height="1"/><rect x="15" y="38" width="1" height="1"/><rect x="17" y="38" width="1" height="1"/><rect x="18" y="38" width="1" height="1"/><rect x="21" y="38" width="1" height="1"/><rect x="23" y="38" width="1" height="1"/><rect x="24" y="38" width="1" height="1"/><rect x="31" y="38" width="1" height="1"/><rect x="35" y="38" width="1" height="1"/><rect x="40" y="38" width="1" height="1"/><rect x="0" y="39" width="1" height="1"/><rect x="6" y="39" width="1" height="1"/><rect x="10" y="39" width="1" height="1"/><rect x="11" y="39" width="1" height="1"/><rect x="15" y="39" width="1" height="1"/><rect x="16" y="39" width="1" height="1"/><rect x="17" y="39" width="1" height="1"/><rect x="18" y="39" width="1" height="1"/><rect x="20" y="39" width="1" height="1"/><rect x="21" y="39" width="1" height="1"/><rect x="22" y="39" width="1" height="1"/><rect x="23" y="39" width="1" height="1"/><rect x="26" y="39" width="1" height="1"/><rect x="27" y="39" width="1" height="1"/><rect x="30" y="39" width="1" height="1"/><rect x="32" y="39" width="1" height="1"/><rect x="33" y="39" width="1" height="1"/><rect x="36" y="39" width="1" height="1"/><rect x="37" y="39" width="1" height="1"/><rect x="39" y="39" width="1" height="1"/><rect x="0" y="40" width="1" height="1"/><rect x="1" y="40" width="1" height="1"/><rect x="2" y="40" width="1" height="1"/><rect x="3" y="40" width="1" height="1"/><rect x="4" y="40" width="1" height="1"/><rect x="5" y="40" width="1" height="1"/><rect x="6" y="40" width="1" height="1"/><rect x="9" y="40" width="1" height="1"/><rect x="10" y="40" width="1" height="1"/><rect x="11" y="40" width="1" height="1"/><rect x="13" y="40" width="1" height="1"/><rect x="14" y="40" width="1" height="1"/><rect x="15" y="40" width="1" height="1"/><rect x="16" y="40" width="1" height="1"/><rect x="17" y="40" width="1" height="1"/><rect x="18" y="40" width="1" height="1"/><rect x="22" y="40" width="1" height="1"/><rect x="24" y="40" width="1" height="1"/><rect x="25" y="40" width="1" height="1"/><rect x="26" y="40" width="1" height="1"/><rect x="28" y="40" width="1" height="1"/><rect x="30" y="40" width="1" height="1"/><rect x="31" y="40" width="1" height="1"/><rect x="32" y="40" width="1" height="1"/><rect x="33" y="40" width="1" height="1"/><rect x="34" y="40" width="1" height="1"/><rect x="39" y="40" width="1" height="1"/></g></svg>
+            </div>
+            <div class="location-qr-title">
+                امسح الكود للوصول إلى موقع القاعة
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- العداد -->
+
+    <section class="section">
+
+        <h2 class="countdown-title">
+            لم يتبقَ سوى...
+        </h2>
+
+        <div class="countdown">
+
+            <div class="count-box">
+                <span class="count-number" id="days">00</span>
+                <span class="count-label">يوم</span>
+            </div>
+
+            <div class="count-box">
+                <span class="count-number" id="hours">00</span>
+                <span class="count-label">ساعة</span>
+            </div>
+
+            <div class="count-box">
+                <span class="count-number" id="minutes">00</span>
+                <span class="count-label">دقيقة</span>
+            </div>
+
+            <div class="count-box">
+                <span class="count-number" id="seconds">00</span>
+                <span class="count-label">ثانية</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- النهاية -->
+
+    
+    <!-- ممنوع التصوير -->
+    <section class="section no-photography-section" id="no-photography-section">
+        <div class="inner">
+            <div class="rule-card photography-card">
+                <div class="rule-icon">
+                    <svg viewBox="0 0 64 64" fill="none"
+     stroke="currentColor" stroke-width="2.6"
+     stroke-linecap="round" stroke-linejoin="round"
+     aria-hidden="true">
+    <path d="M14 21h10l4-5h8l4 5h10c3.3 0 6 2.7 6 6v22c0 3.3-2.7 6-6 6H14c-3.3 0-6-2.7-6-6V27c0-3.3 2.7-6 6-6Z"/>
+    <circle cx="32" cy="38" r="9"/>
+    <circle cx="47" cy="28" r="2"/>
+    <path d="M11 11l42 42" stroke-width="4"/>
+</svg>
+                </div>
+                <div class="rule-title">ممنوع التصوير</div>
+                <div class="rule-text">
+                    حفاظًا على خصوصية المناسبة،
+                    نرجو منكم لطفًا الامتناع عن التصوير.
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="section">
+
+        <div class="ornament"></div>
+
+        <div class="final-message">
+            ننتظر حضوركم
+            بكل محبة
+        </div>
+
+        <div class="final-sub">
+            لتكتمل فرحتنا بوجودكم
+        </div>
+
+        <div class="ornament"></div>
+
+    </section>
+
+    <div class="bottom-space"></div>
+
+</main>
+
+
+<!-- =========================
+     الموسيقى
+========================= -->
+
+<audio
+    id="weddingMusic"
+    loop
+    preload="auto">
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+
+
+<script>
+
+/* =====================================
+   العناصر
+===================================== */
+
+const cover = document.getElementById("cover");
+if (!cover) { console.error("Cover element not found."); }
+const invitation = document.getElementById("invitation");
+
+const music = document.getElementById("weddingMusic");
+const musicButton = document.getElementById("musicButton");
+
+
+
+/* =====================================
+   فتح الدعوة + تشغيل الموسيقى
+===================================== */
+
+cover.addEventListener("click", async function () {
+
+    cover.classList.add("opening");
+
+    invitation.classList.add("show");
+
+    try {
+
+        music.volume = 0.8;
+
+        await music.play();
+
+        musicButton.classList.add("playing");
+
+    } catch (error) {
+
+        console.log("Music playback blocked:", error);
+
+    }
+
+    setTimeout(() => {
+
+        cover.style.display = "none";
+
+    }, 1000);
+
+});
+
+
+/* =====================================
+   زر الموسيقى
+===================================== */
+
+musicButton.addEventListener("click", async function (event) {
+
+    event.stopPropagation();
+
+    if (music.paused) {
+
+        try {
+
+            await music.play();
+
+            musicButton.classList.add("playing");
+
+        } catch (error) {
+
+            console.log(error);
+
+        }
+
+    } else {
+
+        music.pause();
+
+        musicButton.classList.remove("playing");
+
+    }
+
+});
+
+
+/* =====================================
+   العداد التنازلي
+===================================== */
+
+/*
+   30 أكتوبر 2026
+   الساعة 15:00
+*/
+
+const weddingDate =
+    new Date("2026-10-30T15:00:00").getTime();
+
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+
+    if (distance <= 0) {
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+
+    }
+
+
+    const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>

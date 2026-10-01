@@ -779,6 +779,43 @@ body {
 }
 </style>
 
+<style id="no-children-section-style">
+.no-children-section{
+    padding-top:0 !important;
+    padding-bottom:35px !important;
+}
+.children-card{
+    border-color:rgba(225,183,113,.72) !important;
+    background:linear-gradient(145deg,rgba(67,31,18,.82),rgba(37,17,10,.76)) !important;
+}
+.children-card .rule-icon{
+    width:76px !important;
+    height:76px !important;
+    border:1px solid rgba(231,189,123,.65) !important;
+    border-radius:50% !important;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255,231,190,.12), transparent 48%),
+        rgba(90,47,27,.30) !important;
+    color:#f0cf95 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.28),
+        inset 0 0 18px rgba(255,224,177,.06) !important;
+}
+.children-card .rule-icon svg{
+    width:42px !important;
+    height:42px !important;
+    display:block !important;
+    filter:drop-shadow(0 2px 5px rgba(0,0,0,.25));
+}
+@media(max-width:500px){
+    .no-children-section{
+        padding-bottom:25px !important;
+    }
+}
+</style>
 
 <style id="premium-camera-icon">
 .photography-card .rule-icon{
@@ -1176,6 +1213,28 @@ body {
                 <div class="rule-text">
                     حفاظًا على خصوصية المناسبة،
                     نرجو منكم لطفًا الامتناع عن التصوير.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ممنوع الأطفال -->
+    <section class="section no-children-section" id="no-children-section">
+        <div class="inner">
+            <div class="rule-card children-card">
+                <div class="rule-icon">
+                    <svg viewBox="0 0 64 64" fill="none"
+                         stroke="currentColor" stroke-width="2.6"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="32" cy="20" r="7"/>
+                        <path d="M20 48c1-9 5-14 12-14s11 5 12 14"/>
+                        <path d="M12 12l40 40" stroke-width="4"/>
+                    </svg>
+                </div>
+                <div class="rule-title">ممنوع الأطفال</div>
+                <div class="rule-text">
+                    نعتذر لطفًا، الحفل مخصص للكبار فقط.
                 </div>
             </div>
         </div>
